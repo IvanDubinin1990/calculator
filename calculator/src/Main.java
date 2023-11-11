@@ -6,7 +6,7 @@ public class Main {
 
         while (true) {
             try {
-                System.out.println("Введите 2 числа и действие через пробел (+ или -), римскими или арабскими цифрами: ");
+                System.out.println("Введите два числа от 1 до 10 и действие через пробел (+, -, *, /), римскими или арабскими цифрами: ");
                 String input = new Scanner(System.in).nextLine().trim();
                 proverkaChisel(input);
                 break;
@@ -25,13 +25,13 @@ public class Main {
         String pervoeChislo = str[0];
         String vtoroeChislo = str[2];
 
-        for (int i = 0; i < pervoeChislo.length(); i++) {
+        for (int i = 0; i < input.length(); i++) {
             if (ARABIC_NUMERALS.contains(String.valueOf(pervoeChislo.charAt(i))) && ARABIC_NUMERALS.contains(String.valueOf(vtoroeChislo.charAt(i)))) {
                 calculateArabicNumerals(str);
-
+                break;
             } else if (ROMAN_NUMERALS.contains(String.valueOf(pervoeChislo.charAt(i))) && ROMAN_NUMERALS.contains(String.valueOf(vtoroeChislo.charAt(i)))) {
                 calculateRomanNumerals(str);
-
+                break;
             } else {
                 System.out.println("Можно произвести действие либо с двумя арабскими, либо с двумя римскими цифрами.");
             }
@@ -47,6 +47,10 @@ public class Main {
             System.out.println("Разность введенных чисел: " + (i1 - i2));
         } else if (arr[1].equals("+")) {
             System.out.println("Сумма введенных чисел: " + (i1 + i2));
+        } else if (arr[1].equals("*")) {
+            System.out.println("Произведение введенных чисел: " + (i1 * i2));
+        } else if (arr[1].equals("/")) {
+            System.out.println("Частное введенных чисел: " + (i1 / i2));
         }
     }
 
@@ -79,10 +83,26 @@ public class Main {
             }
         }
         if (str[1].equals("-")) {
-            int sum = x - y;
+            int razn = x - y;
             for (int i = 0; i < arr2.length; i++) {
-                if (sum == arr2[i]) {
+                if (razn == arr2[i]) {
                     System.out.println("Разность введенных чисел: " + arr1[i]);
+                }
+            }
+        }
+        if (str[1].equals("*")) {
+            int multiply = x * y;
+            for (int i = 0; i < arr2.length; i++) {
+                if (multiply == arr2[i]) {
+                    System.out.println("Произведение введенных чисел: " + arr1[i]);
+                }
+            }
+        }
+        if (str[1].equals("/")) {
+            int chastnoe = x / y;
+            for (int i = 0; i < arr2.length; i++) {
+                if (chastnoe == arr2[i]) {
+                    System.out.println("Частное введенных чисел: " + arr1[i]);
                 }
             }
         }
