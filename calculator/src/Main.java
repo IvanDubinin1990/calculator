@@ -3,24 +3,30 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("Введите 2 числа и действие (+ или -), римскими или арабскими цифрами: ");
-        String input = new Scanner(System.in).nextLine().trim();
-        proverkaChisel(input);
 
+        while (true) {
+            try {
+                System.out.println("Введите 2 числа и действие через пробел (+ или -), римскими или арабскими цифрами: ");
+                String input = new Scanner(System.in).nextLine().trim();
+                proverkaChisel(input);
+                break;
+            } catch (ArrayIndexOutOfBoundsException z) {
+                System.out.println("Вы ввели недопустимые символы");
+            }
+        }
     }
 
     public static void proverkaChisel(String input) {
 
-        String[] str = input.split("\\s");
+        String[] str = input.split("(\\s)+");
         String ARABIC_NUMERALS = "1234567890";
         String ROMAN_NUMERALS = "IVX";
 
         String pervoeChislo = str[0];
         String vtoroeChislo = str[2];
-        boolean isCheck = true;
 
         for (int i = 0; i < pervoeChislo.length(); i++) {
-            if (ARABIC_NUMERALS.contains(String.valueOf(pervoeChislo.charAt(i))) &&  ARABIC_NUMERALS.contains(String.valueOf(vtoroeChislo.charAt(i)))) {
+            if (ARABIC_NUMERALS.contains(String.valueOf(pervoeChislo.charAt(i))) && ARABIC_NUMERALS.contains(String.valueOf(vtoroeChislo.charAt(i)))) {
                 calculateArabicNumerals(str);
 
             } else if (ROMAN_NUMERALS.contains(String.valueOf(pervoeChislo.charAt(i))) && ROMAN_NUMERALS.contains(String.valueOf(vtoroeChislo.charAt(i)))) {
@@ -31,7 +37,6 @@ public class Main {
             }
         }
     }
-
 
     public static void calculateArabicNumerals(String[] arr) {
 
@@ -69,7 +74,7 @@ public class Main {
             int sum = x + y;
             for (int i = 0; i < arr2.length; i++) {
                 if (sum == arr2[i]) {
-                    System.out.println(arr1[i]);
+                    System.out.println("Сумма введенных чисел: " + arr1[i]);
                 }
             }
         }
@@ -77,10 +82,9 @@ public class Main {
             int sum = x - y;
             for (int i = 0; i < arr2.length; i++) {
                 if (sum == arr2[i]) {
-                    System.out.println(arr1[i]);
+                    System.out.println("Разность введенных чисел: " + arr1[i]);
                 }
             }
         }
     }
-
 }
