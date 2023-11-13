@@ -11,9 +11,11 @@ public class Main {
                 proverkaChisel(input);
                 break;
             } catch (ArrayIndexOutOfBoundsException z1) {
-                System.out.println("Вы ввели недопустимые символы. Попробуйте ещё раз.");
+                System.out.println("Вы ввели недопустимые символы. Попробуйте ещё раз!");
             } catch (StringIndexOutOfBoundsException z2) {
                 System.out.println("Вы ввели недопустимые символы. Попробуйте ещё раз!");
+            } catch (ArithmeticException z3) {
+                System.out.println("На ноль делить нельзя. Попробуйте ещё раз!");
             }
         }
     }
