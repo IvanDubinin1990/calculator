@@ -8,7 +8,7 @@ public class Main {
             try {
                 System.out.println("Введите два числа от 1 до 10 и действие через пробел (+, -, *, /), римскими или арабскими цифрами: ");
                 String input = new Scanner(System.in).nextLine().trim();
-                proverkaChisel1(input);
+                checkNumbersOne(input);
                 break;
             } catch (ArrayIndexOutOfBoundsException z1) {
                 System.out.println("Вы ввели недопустимые символы. Попробуйте ещё раз!");
@@ -20,7 +20,7 @@ public class Main {
         }
     }
 
-    public static void proverkaChisel1(String input) {
+    public static void checkNumbersOne(String input) {
 
         String[] str = input.split("(\\s)+");
 
@@ -54,7 +54,7 @@ public class Main {
         }
     }
 
-    public static boolean proverkaChisel2(Integer i1, Integer i2) {
+    public static boolean checkNumbersTwo(Integer i1, Integer i2) {
 
         if (i1 < 0 || i1 > 10) {
             if (i2 < 0 || i2 > 10) {
@@ -76,7 +76,7 @@ public class Main {
         Integer i1 = Integer.parseInt(arr[0]);
         Integer i2 = Integer.parseInt(arr[2]);
 
-        boolean isCheck = proverkaChisel2(i1, i2);
+        boolean isCheck = checkNumbersTwo(i1, i2);
         if (isCheck) {
             if (arr[1].equals("-")) {
                 System.out.println("Разность введенных чисел: " + (i1 - i2));
@@ -99,29 +99,29 @@ public class Main {
         int[] arr2 = {-9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 24, 25,
                 27, 28, 30, 32, 35, 36, 40, 42, 45, 48, 49, 50, 54, 56, 60, 63, 64, 70, 72, 80, 81, 90, 100};
 
-        String pervoeChislo = str[0];
-        String vtoroeChislo = str[2];
+        String firstNumber = str[0];
+        String secondNumber = str[2];
 
         for (int i = 0; i < arr1.length; i++) {
-            if (pervoeChislo.equals(arr1[i])) {
-                pervoeChislo = String.valueOf(arr2[i]);
+            if (firstNumber.equals(arr1[i])) {
+                firstNumber = String.valueOf(arr2[i]);
             }
-            if (vtoroeChislo.equals(arr1[i])) {
-                vtoroeChislo = String.valueOf(arr2[i]);
+            if (secondNumber.equals(arr1[i])) {
+                secondNumber = String.valueOf(arr2[i]);
             }
         }
 
-        Integer x = Integer.parseInt(pervoeChislo);
-        Integer y = Integer.parseInt(vtoroeChislo);
+        Integer x = Integer.parseInt(firstNumber);
+        Integer y = Integer.parseInt(secondNumber);
 
-        boolean isCheck = proverkaChisel2(x, y);
+        boolean isCheck = checkNumbersTwo(x, y);
 
         if (isCheck) {
 
             if (str[1].equals("+")) {
-                int sum = x + y;
+                int addition = x + y;
                 for (int i = 0; i < arr2.length; i++) {
-                    if (sum == arr2[i]) {
+                    if (addition == arr2[i]) {
                         System.out.println("Сумма введенных чисел: " + arr1[i]);
                     }
                 }
