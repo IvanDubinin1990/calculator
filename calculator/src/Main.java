@@ -30,16 +30,16 @@ public class Main {
             String ROMAN_NUMERALS = "IVXLC";
             String ARITHMETIC_OPERATION = "+-*/";
 
-            String pervoeChislo = str[0];
-            String vtoroeChislo = str[2];
+            String firstNumber = str[0];
+            String secondNumber = str[2];
             String operation = str[1];
 
             for (int i = 0; i < input.length(); i++) {
                 if (ARITHMETIC_OPERATION.contains(String.valueOf(operation.charAt(i)))) {
-                    if (ARABIC_NUMERALS.contains(String.valueOf(pervoeChislo.charAt(i))) && ARABIC_NUMERALS.contains(String.valueOf(vtoroeChislo.charAt(i)))) {
+                    if (ARABIC_NUMERALS.contains(String.valueOf(firstNumber.charAt(i))) && ARABIC_NUMERALS.contains(String.valueOf(secondNumber.charAt(i)))) {
                         calculateArabicNumerals(str);
                         break;
-                    } else if (ROMAN_NUMERALS.contains(String.valueOf(pervoeChislo.charAt(i))) && ROMAN_NUMERALS.contains(String.valueOf(vtoroeChislo.charAt(i)))) {
+                    } else if (ROMAN_NUMERALS.contains(String.valueOf(firstNumber.charAt(i))) && ROMAN_NUMERALS.contains(String.valueOf(secondNumber.charAt(i)))) {
                         calculateRomanNumerals(str);
                         break;
                     } else {
